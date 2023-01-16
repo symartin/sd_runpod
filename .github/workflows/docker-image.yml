@@ -18,7 +18,9 @@ jobs:
         
       - name: Reclaim disk space
         run: |
-          ${{ github.workspace }}/.github/workflows/script/reclaim_disk_space.sh
+          sudo chmod u+x reclaim_disk_space.sh
+          ./reclaim_disk_space.sh
+        working-directory: ${{ github.workspace }}/.github/workflows/script/
         
       - name: Login to Docker Hub
         uses: docker/login-action@v2
