@@ -1,0 +1,26 @@
+name: Manually triggered Docker build
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'The docker tag'
+        required: true
+        
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+          
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@v5
+        with:
+          name: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKERHUB_REPOSITORY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}    
+          tags: ${{ github.event.inputs.tag }}
+
