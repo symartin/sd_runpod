@@ -2,6 +2,8 @@
 
 set -eu
 
+apt-get update
+
 echo "Memory and swap:"
 free
 echo "---"
@@ -22,7 +24,6 @@ df -h
 
 echo "---"
 echo "Removing large packages"
-apt-get update
 sudo apt-get remove -y '^dotnet.*' --fix-missing
 sudo apt-get remove -y '^mysql.*' --fix-missing
 sudo apt-get remove -y '^linux-azure-headers.*' --fix-missing
