@@ -22,7 +22,6 @@ df -h
 
 echo "---"
 echo "Removing large packages"
-sudo apt-get remove -y '^dotnet.*' 
 sudo apt-get remove -y '^mysql.*' 
 sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell microsoft-edge-stable  
 sudo apt-get remove -y firefox humanity-icon-theme --fix-missing
