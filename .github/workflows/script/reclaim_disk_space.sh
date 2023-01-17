@@ -2,8 +2,6 @@
 
 set -eu
 
-apt-get update
-
 echo "Memory and swap:"
 free
 echo "---"
