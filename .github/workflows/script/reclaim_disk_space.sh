@@ -22,10 +22,9 @@ df -h
 
 echo "---"
 echo "Removing large packages"
-sudo apt-get remove -y '^dotnet.*' --fix-missing
-sudo apt-get remove -y '^mysql.*' --fix-missing
-sudo apt-get remove -y '^linux-azure-headers.*' --fix-missing
-sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell microsoft-edge-stable  --fix-missing
+sudo apt-get remove -y '^dotnet.*' 
+sudo apt-get remove -y '^mysql.*' 
+sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell microsoft-edge-stable  
 sudo apt-get remove -y firefox aspnetcore-runtime-6.0 humanity-icon-theme --fix-missing
 sudo apt-get autoremove -y
 sudo apt-get clean
