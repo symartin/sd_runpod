@@ -12,8 +12,8 @@ echo "Disk space report before modification"
 df -h
 
 echo "---"
-echo "Listing 100 largest packages"
-dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n | tail -n 100
+echo "Listing 200 largest packages"
+dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n | tail -n 200
 
 echo "---"
 echo "remove 4GiB of images"
@@ -23,10 +23,17 @@ df -h
 echo "---"
 echo "Removing large packages"
 sudo apt-get remove -y '^mysql.*' 
+sudo apt-get remove -y '^temurin.*' 
+sudo apt-get remove -y '^llvm.*' 
+
 sudo apt-get remove -y azure-cli google-cloud-sdk google-chrome-stable firefox powershell microsoft-edge-stable  
-sudo apt-get remove -y firefox humanity-icon-theme --fix-missing
-sudo apt-get autoremove -y
+sudo apt-get remove -y firefox humanity-icon-theme mono-utils monodoc-manual --fix-missing
+sudo apt-get remove -y firefox libllvm14 --fix-missing
+
+sudo apt-get autoremove -y >/dev/null 2>&1
 sudo apt-get clean
+sudo apt-get autoremove -y >/dev/null 2>&1
+sudo apt-get autoclean -y >/dev/null 2>&1
 df -h
 
 echo "---"
